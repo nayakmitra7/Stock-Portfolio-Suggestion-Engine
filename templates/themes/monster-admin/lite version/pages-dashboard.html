@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='assets/images/favicon.png') }}">
+    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <link href="{{ url_for('static',filename='assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/colors/blue.css') }}" id="theme" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+<div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
+</div>
+<div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+            <div class="">
+                <a class="navbar-brand" href="/">
+                    <span style="font-weight: bold; font-family:Georgia, serif; color: white;margin-left: 3%">
+                            Stock Portfolio Suggestion Engine
+                        </span>
+                </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto mt-md-0 ">
+                    <li class="nav-item"><a
+                            class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
+                            href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                     <li>
+                        <a href="/" class="waves-effect"><i class="fa fa-home m-r-10"
+                                                                       aria-hidden="true"></i>Home Page</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard" class="waves-effect active"><i class="fa fa-clock-o m-r-10"
+                                                                     aria-hidden="true"></i>Dashboard</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+        </div>
+    </aside>
+   <div class="page-wrapper">
+        <div class="container-fluid">
+           <div class="row page-titles">
+                <div class="col-md-6 col-8 align-self-center">
+                    <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Daily Sales</h4>
+                            <div class="text-right">
+                                <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> $120</h2>
+                                <span class="text-muted">Todays Income</span>
+                            </div>
+                            <span class="text-success">80%</span>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 80%; height: 6px;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Weekly Sales</h4>
+                            <div class="text-right">
+                                <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> $5,000</h2>
+                                <span class="text-muted">Todays Income</span>
+                            </div>
+                            <span class="text-info">30%</span>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">Revenue Statistics</h4>
+                            <div class="flot-chart">
+                                <div class="flot-chart-content" id="flot-line-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+              </div>
+       <footer class="footer text-center">
+        </footer>
+       </div>
+    </div>
+<script src="{{ url_for('static',filename='assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/plugins/bootstrap/js/tether.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.slimscroll.js') }}"></script>
+<script src="{{ url_for('static',filename='js/waves.js') }}"></script>
+<script src="{{ url_for('static',filename='js/sidebarmenu.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/plugins/sticky-kit-master/dist/sticky-kit.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/custom.min.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/plugins/flot/jquery.flot.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/flot-data.js') }}"></script>
+<script src="{{ url_for('static',filename='assets/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
+</body>
+
+</html>
