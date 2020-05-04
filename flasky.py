@@ -1,10 +1,9 @@
 
 from flask import Flask, render_template, request
-import datetime
-from iexfinance.stocks import Stock
-import iexfinance.utils.exceptions as excep
-from pytz import timezone
 import traceback
+from alpha_vantage.timeseries import TimeSeries
+import time
+import math
 
 app = Flask(__name__)
 
@@ -51,7 +50,13 @@ def investment_calculator():
 
         amount_per_strategy = total_amount * 1.0 / len(strategies_selected)
         for strategy in strategies_selected:
-            res, res_details = get_investment_results(strategy, amount_per_strategy, stock_mapping[strategy])
+            try:
+                res, res_details = get_investment_results(strategy, amount_per_strategy, stock_mapping[strategy])
+            except ValueError:
+                # Retry after 1 minute and try again as only 5 API calls are allowed per minute
+                time.sleep(60)
+                res, res_details = get_investment_results(strategy, amount_per_strategy, stock_mapping[strategy])
+
             investment_results.append([strategy, res])
             investment_result_details.append([strategy, res_details])
 
@@ -77,7 +82,63 @@ def investment_calculator():
 def get_investment_results(strategy, amount_per_strategy, stocks_array):
     invest_results = []
     invest_results_detailed = []
+    stock_details = []
+    five_days_history = []
+    company_to_numstocks_map = {}
+    investment_of_day = []
+    history_of_day = []
+
+    investment_per_company = amount_per_strategy / 3
+
+    for stock_symbol in stocks_array:
+
+        ts = TimeSeries(key='CIOM9A34BQQBTHSB')
+        data, meta_data = ts.get_daily_adjusted(stock_symbol)
+
+        if meta_data:
+
+            count = 0
+            for each_entry in data:
+                if count < 5:
+                    stock_details.append(
+                        [strategy, stock_symbol, each_entry, data[each_entry]['5. adjusted close']])
+                    five_days_history.append(each_entry)
+                    count = count + 1
+                else:
+                    break
+
+    sorted_date_set = sorted(set(five_days_history))
+    print(sorted_date_set)
+
+
+    # compute number of initial stocks per company for day 1
+    for stock_detail in stock_details:
+        if stock_detail[2] == sorted_date_set[0]:
+            no_of_stocks_per_company = math.floor(investment_per_company / float(stock_detail[3]))
+            company_to_numstocks_map[stock_detail[1]] = no_of_stocks_per_company
+
+    for index in range(len(sorted_date_set)):
+        investment_of_day.append(0)
+        history_of_day.append([])
+
+    for stock_detail in stock_details:
+        for index in range(len(sorted_date_set)):
+            if stock_detail[2] == sorted_date_set[index]:
+                history_of_day[index].append([stock_detail[1], round(float(stock_detail[3]), 2),
+                                              company_to_numstocks_map[stock_detail[1]]])
+                investment_of_day[index] += company_to_numstocks_map[stock_detail[1]] * float(stock_detail[3])
+
+    for index in range(len(sorted_date_set)):
+        invest_results.append([sorted_date_set[index], round(investment_of_day[index], 2)])
+        invest_results_detailed.append([sorted_date_set[index], history_of_day[index]])
+
+    print("Investment Results: ")
+    print(invest_results)
+    print("Stock Value History Results: ")
+    print(invest_results_detailed)
+
     return invest_results, invest_results_detailed
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
