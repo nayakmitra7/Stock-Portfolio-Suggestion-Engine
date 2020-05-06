@@ -123,8 +123,41 @@
   box-shadow: 0px 5px 0px 0px #3C93D5;
 }
 
+.profile-main-loader{
+    left: 50% !important;
+    margin-left:-100px;
+    position: fixed !important;
+    top: 50% !important;
+    margin-top: -100px;
+    width: 45px;
+    z-index: 9000 !important;
+}
 
+.profile-main-loader .loader {
+  position: relative;
+  margin: 0px auto;
+  width: 180px;
+  height:180px;
+}
+.profile-main-loader .loader:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
 
+.circular-loader {
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
+  height: 100%;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
 
     </style>
 </head>
@@ -163,19 +196,25 @@ function myFunction() {
       alert("Maximum 2 strategies at a time !");
       return false;
     }else{
+    document.getElementById("load").style.display="";
         return true;
     }
 }
 
 
 
+
 </script>
 
 <body class="fix-header card-no-border">
-<div class="preloader">
-    <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-    </svg>
+<div class="preloader" id="load" style="background-color:white;opacity:0.8">
+    <div class="profile-main-loader">
+        <div class="loader">
+            <svg class="circular-loader" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+    </div>
 </div>
 <div id="main-wrapper">
     <header class="topbar">
