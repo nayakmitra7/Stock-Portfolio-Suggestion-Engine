@@ -17,9 +17,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<script>
+<style>
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+     font-size : 20px;
+     margin-top:5px;
+     font-family:";
+    }
 
-</script>
+
+
+</style>
 <body class="fix-header fix-sidebar card-no-border">
 <div class="preloader">
     <svg class="circular" viewBox="25 25 50 50">
@@ -50,13 +57,13 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                     <li>
+                    <li>
                         <a href="/" class="waves-effect"><i class="fa fa-home m-r-10"
-                                                                       aria-hidden="true"></i>Home Page</a>
+                                                            aria-hidden="true"></i>Home Page</a>
                     </li>
                     <li>
                         <a href="" class="waves-effect active"><i class="fa fa-clock-o m-r-10"
-                                                                     aria-hidden="true"></i>Dashboard</a>
+                                                                  aria-hidden="true"></i>Dashboard</a>
                     </li>
 
                 </ul>
@@ -64,9 +71,9 @@
             </nav>
         </div>
     </aside>
-   <div class="page-wrapper">
+    <div class="page-wrapper">
         <div class="container-fluid">
-           <div class="row page-titles">
+            <div class="row page-titles" style="padding-bottom:0px">
                 <div class="col-md-6 col-8 align-self-center">
                     <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                     <ol class="breadcrumb">
@@ -77,13 +84,19 @@
 
             </div>
             {% if details[1] %}
-             <div class="row">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#f62d51">Total Investment</h4>
-                            <div class ="row">
-                                <div class="col-md-5"><h2>$ {{ "%.2f"|format(details[0][1][4][1][0][1]*details[0][1][4][1][0][2]+ details[0][1][4][1][1][1]*details[0][1][4][1][1][2] + details[0][1][4][1][2][1]*details[0][1][4][1][2][2] + details[1][1][4][1][0][1]*details[1][1][4][1][0][2]+ details[1][1][4][1][1][1]*details[1][1][4][1][1][2] + details[1][1][4][1][2][1]*details[1][1][4][1][2][2] )}}</h2></div>
+                            <div class="row">
+                                <div class="col-md-5"><h2>$ {{
+                                    "%.2f"|format(details[0][1][4][1][0][1]*details[0][1][4][1][0][2]+
+                                    details[0][1][4][1][1][1]*details[0][1][4][1][1][2] +
+                                    details[0][1][4][1][2][1]*details[0][1][4][1][2][2] +
+                                    details[1][1][4][1][0][1]*details[1][1][4][1][0][2]+
+                                    details[1][1][4][1][1][1]*details[1][1][4][1][1][2] +
+                                    details[1][1][4][1][2][1]*details[1][1][4][1][2][2] )}}</h2></div>
                             </div>
 
                         </div>
@@ -91,13 +104,16 @@
                 </div>
             </div>
             {% else %}
-             <div class="row">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#f62d51">Total Investment</h4>
-                            <div class ="row">
-                                <div class="col-md-5"><h2>$ {{ "%.2f"|format(details[0][1][4][1][0][1]*details[0][1][4][1][0][2]+ details[0][1][4][1][1][1]*details[0][1][4][1][1][2] + details[0][1][4][1][2][1]*details[0][1][4][1][2][2]) }}</h2></div>
+                            <div class="row">
+                                <div class="col-md-5"><h2>$ {{
+                                    "%.2f"|format(details[0][1][4][1][0][1]*details[0][1][4][1][0][2]+
+                                    details[0][1][4][1][1][1]*details[0][1][4][1][1][2] +
+                                    details[0][1][4][1][2][1]*details[0][1][4][1][2][2]) }}</h2></div>
                             </div>
 
                         </div>
@@ -111,15 +127,21 @@
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#55ce63">{{details[0][0]}}</h4>
-                            <div class ="row">
+                            <div class="row">
                                 <div class="col-md-4"><h2>{{details[0][1][4][1][0][0]}}</h2></div>
                                 <div class="col-md-5"><h2>$ {{details[0][1][4][1][0][1]}}</h2></div>
-                                <div class="col-md-3"><h2 >{{details[0][1][4][1][0][2]}}</h2></div>
+                                <div class="col-md-3"><h2>{{details[0][1][4][1][0][2]}}</h2></div>
                             </div>
-                            <div class ="row">
-                                <div class="col-md-4"><div class="text-muted">Symbol</div></div>
-                                <div class="col-md-5"><div class="text-muted">Current Price</div></div>
-                                <div class="col-md-3"><div class="text-muted">Stocks</div></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-muted">Symbol</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="text-muted">Current Price</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-muted">Stocks</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,15 +150,21 @@
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#55ce63">{{details[0][0]}}</h4>
-                            <div class ="row">
+                            <div class="row">
                                 <div class="col-md-4"><h2>{{details[0][1][4][1][1][0]}}</h2></div>
                                 <div class="col-md-5"><h2>$ {{details[0][1][4][1][1][1]}}</h2></div>
-                                <div class="col-md-3"><h2 >{{details[0][1][4][1][1][2]}}</h2></div>
+                                <div class="col-md-3"><h2>{{details[0][1][4][1][1][2]}}</h2></div>
                             </div>
-                            <div class ="row">
-                                <div class="col-md-4"><div class="text-muted">Symbol</div></div>
-                                <div class="col-md-5"><div class="text-muted">Current Price</div></div>
-                                <div class="col-md-3"><div class="text-muted">Stocks</div></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-muted">Symbol</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="text-muted">Current Price</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-muted">Stocks</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -145,35 +173,47 @@
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#55ce63">{{details[0][0]}}</h4>
-                            <div class ="row">
+                            <div class="row">
                                 <div class="col-md-4"><h2>{{details[0][1][4][1][2][0]}}</h2></div>
                                 <div class="col-md-5"><h2>$ {{details[0][1][4][1][2][1]}}</h2></div>
-                                <div class="col-md-3"><h2 >{{details[0][1][4][1][2][2]}}</h2></div>
+                                <div class="col-md-3"><h2>{{details[0][1][4][1][2][2]}}</h2></div>
                             </div>
-                            <div class ="row">
-                                <div class="col-md-4"><div class="text-muted">Symbol</div></div>
-                                <div class="col-md-5"><div class="text-muted">Current Price</div></div>
-                                <div class="col-md-3"><div class="text-muted">Stocks</div></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-muted">Symbol</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="text-muted">Current Price</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-muted">Stocks</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-             {% if details[1] %}
+            {% if details[1] %}
             <div class="row" id="second">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#ffbc34">{{details[1][0]}}</h4>
-                            <div class ="row">
+                            <div class="row">
                                 <div class="col-md-4"><h2>{{details[1][1][4][1][0][0]}}</h2></div>
                                 <div class="col-md-5"><h2>$ {{details[1][1][4][1][0][1]}}</h2></div>
-                                <div class="col-md-3"><h2 >{{details[1][1][4][1][0][2]}}</h2></div>
+                                <div class="col-md-3"><h2>{{details[1][1][4][1][0][2]}}</h2></div>
                             </div>
-                            <div class ="row">
-                                <div class="col-md-4"><div class="text-muted">Symbol</div></div>
-                                <div class="col-md-5"><div class="text-muted">Current Price</div></div>
-                                <div class="col-md-3"><div class="text-muted">Stocks</div></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-muted">Symbol</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="text-muted">Current Price</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-muted">Stocks</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,15 +222,21 @@
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#ffbc34">{{details[1][0]}}</h4>
-                            <div class ="row">
+                            <div class="row">
                                 <div class="col-md-4"><h2>{{details[1][1][4][1][1][0]}}</h2></div>
                                 <div class="col-md-5"><h2>$ {{details[1][1][4][1][1][1]}}</h2></div>
-                                <div class="col-md-3"><h2 >{{details[1][1][4][1][1][2]}}</h2></div>
+                                <div class="col-md-3"><h2>{{details[1][1][4][1][1][2]}}</h2></div>
                             </div>
-                            <div class ="row">
-                                <div class="col-md-4"><div class="text-muted">Symbol</div></div>
-                                <div class="col-md-5"><div class="text-muted">Current Price</div></div>
-                                <div class="col-md-3"><div class="text-muted">Stocks</div></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-muted">Symbol</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="text-muted">Current Price</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-muted">Stocks</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -199,32 +245,65 @@
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:#ffbc34">{{details[1][0]}}</h4>
-                            <div class ="row">
+                            <div class="row">
                                 <div class="col-md-4"><h2>{{details[1][1][4][1][2][0]}}</h2></div>
                                 <div class="col-md-5"><h2>$ {{details[1][1][4][1][2][1]}}</h2></div>
-                                <div class="col-md-3"><h2 >{{details[1][1][4][1][2][2]}}</h2></div>
+                                <div class="col-md-3"><h2>{{details[1][1][4][1][2][2]}}</h2></div>
                             </div>
-                            <div class ="row">
-                                <div class="col-md-4"><div class="text-muted">Symbol</div></div>
-                                <div class="col-md-5"><div class="text-muted">Current Price</div></div>
-                                <div class="col-md-3"><div class="text-muted">Stocks</div></div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-muted">Symbol</div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="text-muted">Current Price</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-muted">Stocks</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-             {% endif %}
+            {% endif %}
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-block">
+            <div class="card shadow-md">
+                <div class="container">
+                    <h4 class="card-title" style="color:#6f42c1; margin-bottom:2%;margin-top:2%">{{details[0][0]}}</h4>
+                    <div class="row">
+                        <ul class="nav nav-tabs nav-justified mb-3">
+                            <li class="nav-item">
+                                <a href="#home" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                    <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
+                                    <span class="d-none d-lg-block"><h3 style="font-size : 16px">{{details[0][1][4][1][0][0]}}</h3></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#profile" data-toggle="tab" aria-expanded="false"
+                                   class="nav-link ">
+                                    <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
+                                    <span class="d-none d-lg-block"><h3 style="font-size : 16px">{{details[0][1][4][1][1][0]}}</h3></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#settings" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
+                                    <span class="d-none d-lg-block"><h3 style="font-size : 16px">{{details[0][1][4][1][2][0]}}</h3></span>
+                                </a>
+                            </li>
+                        </ul>
 
-                            <div class="container">
-                                <canvas id="myChart"></canvas>
-                            </div>
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="home">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
 
-                      <script>
+                                            <div class="container">
+                                                <canvas id="myChart" height="150"></canvas>
+                                            </div>
+
+                                            <script>
                         let myChart = document.getElementById('myChart').getContext('2d');
 
                         // Global Options
@@ -287,22 +366,25 @@
                             }
                           }
                         });
-                      </script>
 
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-block">
 
-                            <div class="container">
-                                <canvas id="myChart1"></canvas>
+
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="tab-pane" id="profile">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
 
-                      <script>
+                                            <div class="container">
+                                                <canvas id="myChart1" height="150"></canvas>
+                                            </div>
+
+                                            <script>
                         let myChart1 = document.getElementById('myChart1').getContext('2d');
 
                         // Global Options
@@ -365,23 +447,26 @@
                             }
                           }
                         });
-                      </script>
-
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-block">
 
 
-                            <div class="container">
-                                <canvas id="myChart2"></canvas>
+
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="tab-pane" id="settings">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
 
-                      <script>
+
+                                            <div class="container">
+                                                <canvas id="myChart2" height="150"></canvas>
+                                            </div>
+
+                                            <script>
                         let myChart2 = document.getElementById('myChart2').getContext('2d');
 
                         // Global Options
@@ -444,25 +529,62 @@
                             }
                           }
                         });
-                      </script>
+
+
+
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
-            </div>
 
 
             {% if details[1] %}
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-block">
 
-                            <div class="container">
-                                <canvas id="myChart3"></canvas>
-                            </div>
 
-                      <script>
+            <div class="card shadow-md">
+                <div class="container">
+                    <h4 class="card-title" style="color:#8f4731; margin-bottom:2%;margin-top:2%">{{details[1][0]}}</h4>
+                    <div class="row">
+                        <ul class="nav nav-tabs nav-justified mb-3">
+                            <li class="nav-item">
+                                <a href="#home1" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                    <i class="mdi mdi-home-variant d-lg-none d-block mr-1"></i>
+                                    <span class="d-none d-lg-block"><h3 style="font-size : 16px">{{details[1][1][4][1][0][0]}}</h3></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#profile1" data-toggle="tab" aria-expanded="false"
+                                   class="nav-link ">
+                                    <i class="mdi mdi-account-circle d-lg-none d-block mr-1"></i>
+                                    <span class="d-none d-lg-block"><h3 style="font-size : 16px">{{details[1][1][4][1][1][0]}}</h3></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#settings1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    <i class="mdi mdi-settings-outline d-lg-none d-block mr-1"></i>
+                                    <span class="d-none d-lg-block"><h3 style="font-size : 16px">{{details[1][1][4][1][2][0]}}</h3></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="home1">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
+
+                                            <div class="container">
+                                                <canvas id="myChart3" height="150"></canvas>
+                                            </div>
+
+                                            <script>
                         let myChart3 = document.getElementById('myChart3').getContext('2d');
 
                         // Global Options
@@ -525,22 +647,25 @@
                             }
                           }
                         });
-                      </script>
 
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-block">
 
-                            <div class="container">
-                                <canvas id="myChart4"></canvas>
+
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="tab-pane" id="profile1">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
 
-                      <script>
+                                            <div class="container">
+                                                <canvas id="myChart4" height="150"></canvas>
+                                            </div>
+
+                                            <script>
                         let myChart4 = document.getElementById('myChart4').getContext('2d');
 
                         // Global Options
@@ -603,23 +728,21 @@
                             }
                           }
                         });
-                      </script>
+                                            </script>
 
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-block">
-
-
-                            <div class="container">
-                                <canvas id="myChart5"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="tab-pane" id="settings1">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-block">
+                                            <div class="container">
+                                                <canvas id="myChart5" height="150"></canvas>
+                                            </div>
 
-                      <script>
+                                            <script>
                         let myChart5 = document.getElementById('myChart5').getContext('2d');
 
                         // Global Options
@@ -682,17 +805,23 @@
                             }
                           }
                         });
-                      </script>
+
+
+
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
-            </div>
             {% endif %}
 
-       <footer class="footer text-center">
-        </footer>
-       </div>
+        </div>
     </div>
 </div>
 <script src="{{ url_for('static',filename='assets/plugins/jquery/jquery.min.js') }}"></script>
