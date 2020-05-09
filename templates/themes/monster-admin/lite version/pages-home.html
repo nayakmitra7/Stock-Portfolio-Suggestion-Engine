@@ -196,8 +196,10 @@ function myFunction() {
       alert("Maximum 2 strategies at a time !");
       return false;
     }else{
-    document.getElementById("load").style.display="";
+    if(document.getElementById('inputBox').value >= 5000){
+document.getElementById("load").style.display="";
         return true;
+    }
     }
 }
 
@@ -261,7 +263,7 @@ function myFunction() {
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="number" name="search" min="5000" style="font-weight: bold"
+                                        <input type="number" id= "inputBox" name="search" min="5000" style="font-weight: bold"
                                                required>
                                     </div>
                                 </div>
