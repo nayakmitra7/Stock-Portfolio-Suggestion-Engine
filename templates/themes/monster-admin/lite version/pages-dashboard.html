@@ -86,7 +86,19 @@
             </div>
             {% if details[1] %}
             <div class="row">
-                <div class="col-md-12">
+                 <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title" style="color:rgba(255, 99, 132, 1)">Initial Investment</h4>
+                            <div class="row">
+                                <div class="col-md-5"><h2>$ {{
+                                    "%.2f"|format(results[0][1][0][1]+results[1][1][0][1]) }}</h2></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-block">
                             <h4 class="card-title" style="color:rgba(255, 99, 132, 1)">Total Investment</h4>
@@ -106,10 +118,22 @@
             </div>
             {% else %}
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-block">
-                            <h4 class="card-title" style="color:rgba(255, 99, 132, 1)">Total Investment</h4>
+                            <h4 class="card-title" style="color:rgba(255, 99, 132, 1)">Initial Investment</h4>
+                            <div class="row">
+                                <div class="col-md-5"><h2>$ {{
+                                    "%.2f"|format(results[0][1][0][1]) }}</h2></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title" style="color:rgba(255, 99, 132, 1)">Current Investment Value</h4>
                             <div class="row">
                                 <div class="col-md-5"><h2>$ {{
                                     "%.2f"|format(details[0][1][4][1][0][1]*details[0][1][4][1][0][2]+
@@ -386,12 +410,6 @@
           }
                           }
                         });
-
-
-
-
-
-
                                             </script>
 
                                         </div>
@@ -1099,11 +1117,6 @@
                           }
                         });
 
-
-
-
-
-
                                             </script>
 
                                         </div>
@@ -1123,7 +1136,7 @@
                 <div class="card">
                     <div class="card-block">
                         <div class="container">
-                            <h4 class="card-title" style="color:#6f42c1; margin-bottom:2%;margin-top:2%">Total
+                            <h4 class="card-title" style="color:#6f42c1; margin-bottom:2%;margin-top:2%">Current
                                 Investment Breakdown</h4>
 
                             <canvas id="myChart10" height="100"></canvas>
@@ -1207,7 +1220,7 @@
 
                     <div class="card-block">
                         <div class="container">
-                            <h4 class="card-title" style="color:#6f42c1; margin-bottom:2%;margin-top:2%">Total
+                            <h4 class="card-title" style="color:#6f42c1; margin-bottom:2%;margin-top:2%">Current
                                 Investment Breakdown</h4>
                             <canvas id="myChart10" height="100"></canvas>
                         </div>
