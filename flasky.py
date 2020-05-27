@@ -92,7 +92,7 @@ def get_investment_results(strategy, amount_per_strategy, stocks_array):
 
     for stock_symbol in stocks_array:
 
-        ts = TimeSeries(key='CIOM9A34BQQBTHSB')
+        ts = TimeSeries(key='')
         data, meta_data = ts.get_daily_adjusted(stock_symbol)
 
         if meta_data:
